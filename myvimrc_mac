@@ -1,0 +1,242 @@
+" Operation as yy,D and P work wiht system clipboard
+syntax enable
+let mapleader = " "
+" set unnamed clipboard
+set clipboard=unnamed
+" set clipboard=unnamedplus
+" original tab will not work, instead <tabstop> is going to be used.
+" To insert a real tab when 'expandtab' is on, use CTRL-V<Tab>
+" set paste will disable auto indent
+set expandtab
+" toggle to disable autoindent
+set pastetoggle=<F2>
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set showtabline=2
+set nu
+set rnu
+set splitbelow
+set splitright
+set noerrorbells visualbell t_vb=
+set encoding=utf-8
+set scrolloff=3
+set showmode
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set visualbell
+set history=1000
+set undolevels=10000
+set nobackup
+set noswapfile
+"cursorline give underline
+" set cursorline 
+" set cursorcolumn
+set ttyfast
+set ruler
+set backspace=indent,eol,start
+set undofile
+set undodir=/tmp
+set shell=/bin/zsh
+set lazyredraw
+set matchtime=3
+set title
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+set hlsearch
+" Dictionary path, from which the words are being looked up.
+set dictionary=/usr/share/dict/words
+" Enable Mouse
+set mouse=a
+" Make Vim to handle long lines nicely.
+set wrap
+set textwidth=79
+"set colorcolumn=+1
+set formatoptions=qrn1
+"set colorcolumn=79
+function! ToggleNumbersOn()
+      set nu!
+      set rnu
+endfunction
+function! ToggleRelativeOn()
+      set rnu!
+      set nu
+endfunction
+autocmd FocusLost * call ToggleRelativeOn()
+autocmd FocusGained * call ToggleRelativeOn()
+autocmd InsertEnter * call ToggleRelativeOn()
+autocmd InsertLeave * call ToggleRelativeOn()
+
+autocmd GUIEnter * set visualbell t_vb=
+function! CleverTab()
+   if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+      return "\<Tab>"
+   else
+      return "\<C-N>"
+   endif
+endfunction
+inoremap <Tab> <C-R>=CleverTab()<CR>
+
+" Awesome customized key
+nnoremap pp o<esc>"*p
+inoremap pp <esc>o<esc>"*p
+inoremap PP O<esc>"*p
+inoremap PP <esc>O<esc>"*p
+nnoremap H ^
+nnoremap L $
+inoremap jk <esc>
+vnoremap jk <esc>
+nnoremap <Leader>r :%s/\<<C-r><C-w>\>/
+nnoremap <Leader>h :tab help <C-r><C-w><CR>
+" nnoremap <Leader>f :let @/ = '\\|\<'.expand('<cword>').'\>'
+nnoremap <silent> <Leader>f :let @/ = '\<'.expand('<cword>').'\>'<cr>
+"Map Ctrl + S to save in any mode
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+" Quickly close windows
+nnoremap <leader>x :x<cr>
+nnoremap <leader>X :q!<cr>
+"ev Shortcut to edit .vimrc file on the fly on a vertical window.
+" nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+" use :tab h ^w^v
+" <C-w><C-V> - to create a vertical split
+" <c-l> - to refresh
+nnoremap <leader>ev <C-w><C-v><C-l>:e ~/.myvimrc<cr>
+" multiple window navigation
+nnoremap wj <C-W><C-J>
+nnoremap wk <C-W><C-K>
+nnoremap wl <C-W><C-L>
+nnoremap wh <C-W><C-H>
+" multiple tab nagigation
+nnoremap tn :tabnew<space>
+nnoremap tk :tabnext<CR>
+nnoremap tj :tabprev<CR>
+nnoremap th :tabfirst<CR>
+nnoremap tl :tablast<CR>
+
+nnoremap ; : 
+vmap ; : 
+nmap <silent> <leader>/ :nohlsearch<CR> 
+nnoremap / /\v
+vnoremap / /\v 
+nnoremap <tab> % 
+vnoremap <tab> %
+" insert the actual <tab>
+nnoremap <S-Tab> <C-V><Tab>
+" W Command to remove white space from a file.
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+" go to place of last change
+nnoremap g; g;zz
+"q Re-hardwrap Paragraph
+nnoremap <leader>q gqip
+" ====== COLORSCHEME ==============================
+" ========option name default optional
+let g:solarized_termcolors= 16 
+let g:solarized_termtrans = 16 
+let g:solarized_degrade = 1 
+let g:solarized_bold = 1 
+let g:solarized_underline = 1 
+let g:solarized_italic = 1 
+let g:solarized_contrast = "high" 
+let g:solarized_visibility= "high"
+" ==============================================================
+set background=dark
+" colorscheme solarized
+colorscheme default
+
+" go to next/previous tag
+" nnoremap <leader>d :tprev<cr>
+" nnoremap <leader>tj :tjump<cr>
+
+"gaoyan" To  show special characters in Vim
+"gaoyan"set list
+"gaoyanset listchars=tab:▸\ ,eol:¬
+"gaoyan
+"gaoyan" ========================================================================================
+
+
+" Different search patterns 
+let g:cpp_pattern = "*.{cpp,c,h,hpp}"
+let g:java_pattern = "*.{java}"
+let g:makefile_pattern = "Makefile*"
+let g:text_pattern = "*.{txt,text}"
+let g:python_pattern = "*.{py}"
+let g:cpp_java_pattern = "*.{cpp,c,h.hpp,java,cc,hh}"
+
+"gaoyan"==========================================================================="
+"gaoyan" C\C++ projects settings
+"gaoyan"==========================================================================="
+"gaoyan"Global project settings 
+"gaoyanlet g:project_root = "."
+"gaoyan
+"gaoyanlet g:search_root = g:project_root
+"gaoyanlet g:search_pattern = "*.*"
+"gaoyan"==========================================================================="
+"gaoyan" Get Rid of stupid Goddamned help keys
+"gaoyaninoremap <F1> <ESC>
+"gaoyannnoremap <F1> <ESC>
+"gaoyanvnoremap <F1> <ESC>
+"gaoyan
+"gaoyan"==========================================================================="
+"gaoyan" Set vim to save the file on focus out.
+"gaoyanau FocusLost * :wa
+"gaoyan"==========================================================================="
+"gaoyan" Redraw screen every time when focus gained
+"gaoyanau FocusGained * :redraw!
+"gaoyan"==========================================================================="
+" gaoyan" Adding More Shorcuts keys using leader kye.
+
+"gaoyan" Leader Kye provide separate namespace for specific commands.
+"gaoyan
+"gaoyan" ,ft Fold tag, helpful for HTML editing.
+"gaoyannnoremap <leader>ft vatzf
+"gaoyan
+"gaoyan
+"gaoyan
+"gaoyan
+"gaoyan"==========================================================================="
+"gaoyan" Working with split screen nicely
+"gaoyan" Resize Split When the window is resized"
+"gaoyanau VimResized * :wincmd =
+"gaoyan
+"gaoyan"==========================================================================="
+"gaoyan" Wildmenu completion "
+"gaoyanset wildmenu
+"gaoyanset wildmode=list:longest
+"gaoyanset wildignore+=.hg,.git,.svn " Version Controls"
+"gaoyanset wildignore+=*.aux,*.out,*.toc "Latex Indermediate files"
+"gaoyanset wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Binary Imgs"
+"gaoyanset wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest "Compiled Object files"
+"gaoyanset wildignore+=*.spl "Compiled speolling world list"
+"gaoyanset wildignore+=*.sw? "Vim swap files"
+"gaoyanset wildignore+=*.DS_Store "OSX SHIT"
+"gaoyanset wildignore+=*.luac "Lua byte code"
+"gaoyanset wildignore+=migrations "Django migrations"
+"gaoyanset wildignore+=*.pyc "Python Object codes"
+"gaoyanset wildignore+=*.orig,*.rej "Merge resolution files"
+"gaoyan
+"gaoyan"==========================================================================="
+"gaoyan" Make Sure that Vim returns to the same line when we reopen a file"
+"gaoyanaugroup line_return
+"gaoyan    au!
+"gaoyan    au BufReadPost *
+"gaoyan                \ if line("'\"") > 0 && line("'\"") <= line("$") |
+"gaoyan                \ execute 'normal! g`"zvzz' |
+"gaoyan                \ endif
+"gaoyanaugroup END
+"gaoyan
+"gaoyan"==========================================================================="
+
+
+"following is configured for NERDTree
+let g:tagbar_left = 1
+let g:tagbar_vertical = 25
+let NERDTreeWinPos = 'left'
+nnoremap <C-n> :NERDTreeToggle <CR> :TagbarToggle <CR>
+"for jedi 
+let g:jedi#completions_command = "<Tab>"
