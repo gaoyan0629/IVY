@@ -13,3 +13,4 @@ class Person(object):
     @property
     def get_fullname(self):
         return self.name+" "+self.family
+    # added from mac
