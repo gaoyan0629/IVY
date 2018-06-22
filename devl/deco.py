@@ -13,4 +13,4 @@ class Person(object):
     @property
     def get_fullname(self):
         return self.name+" "+self.family
-    added by mistake
+   # added this correctly
