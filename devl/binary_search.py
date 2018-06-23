@@ -1,4 +1,5 @@
 added from Mac
+# version 1
 def binarySearch(alist, item):
     first = 0
     last = len(alist)-1
