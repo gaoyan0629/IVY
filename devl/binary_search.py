@@ -1,6 +1,6 @@
 added from Mac
 # version 1
-# version 2
+#version 2
 added for abc
 >>>>>>> new feature for abc
 def binarySearch(alist, item):
