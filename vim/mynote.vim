@@ -398,3 +398,23 @@ ds"
 ysiw""
 yssb
 csurround
+#####
+Setup remote repository:
+
+ssh git@example.com
+mkdir my_project.git
+cd my_project.git
+git init --bare
+###
+On local machine:
+
+cd my_project
+git init
+git add *
+git commit -m "Initial commit"
+git remote add origin example.com:my_project.git
+git push -u origin master
+########
+
+git remote add pb git@github.com:gaoyan0629/dmv1.git
+## this means we can add a point to remote address
