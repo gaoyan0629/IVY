@@ -427,3 +427,17 @@ git diff
 git log
 " Unstaging a Staged File
 git reset HEAD CONTRIBUTING.md
+git branch -d foo
+#get help
+$ git help <verb>
+$ man git-<verb>
+git add -h
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+
+git config --list --show-origin
+
+git config --global alias.unstage 'reset HEAD --'
+git config --list

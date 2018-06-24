@@ -16,7 +16,7 @@ config = ConfigParser.ConfigParser(allow_no_value=True)
 config.readfp(io.BytesIO(sample_config))
 
 # # Settings with values are treated as before:
-# config.get("mysqld", "user")
+config.get("mysqld", "user")
 #
 # # Settings without values provide None:
 # config.get("mysqld", "skip-bdb")
