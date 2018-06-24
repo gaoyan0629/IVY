@@ -2,6 +2,7 @@ added from Mac
 # version 1
 #version 2
 added for abc
+added in branch abc
 >>>>>>> new feature for abc
 def binarySearch(alist, item):
     first = 0
@@ -24,3 +25,4 @@ testlist = [0, 1, 2, 8, 13, 17, 19, 32, 42,]
 print(binarySearch(testlist, 3))
 print(binarySearch(testlist, 13))
 #added from github
+#add in main branch
