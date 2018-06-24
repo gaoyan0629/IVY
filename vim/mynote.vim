@@ -417,4 +417,13 @@ git push -u origin master
 ########
 
 git remote add pb git@github.com:gaoyan0629/dmv1.git
-## this means we can add a point to remote address
+## this means we can add a point to remote address, later we can do a fetch
+
+git push -d origin feature_x
+" remove the branch from remote
+" push will push both master and branch
+git diff --staged
+git diff
+git log
+" Unstaging a Staged File
+git reset HEAD CONTRIBUTING.md
