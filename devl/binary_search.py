@@ -2,7 +2,7 @@ added from Mac
 # version 1
 #version 2
 added for abc
->>>>>>> new feature for abc
+# new feature
 def binarySearch(alist, item):
     first = 0
     last = len(alist)-1
